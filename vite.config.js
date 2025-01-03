@@ -12,4 +12,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+
+    build: {
+        outDir: "public", // Tentukan direktori output sebagai 'public' atau sesuaikan dengan kebutuhan Anda
+    },
 });

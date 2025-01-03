@@ -94,7 +94,7 @@ class MapTracker {
                     <b>Next Destination:</b> ${truck.next_destination}
                 `;
 
-                    L.marker([lat, long])
+                    L.marker([truck.latitude, truck.longitude])
                         .addTo(this.map)
                         .bindPopup(popupContent);
 
