@@ -1,4 +1,4 @@
-@vite('resources/css/app.css', 'resources/js/app.js', 'resources/js/maps.js')
+@vite('resources/css/app.css', 'resources/js/app.js', 'resources/js/component/map.js')
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <body>
     <div class="bg-white">
