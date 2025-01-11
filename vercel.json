@@ -9,7 +9,7 @@
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
-    "buildCommand": "npm install && vite build",
+    "buildCommand": "apt-get update && apt-get install -y libssl-dev && vite build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
