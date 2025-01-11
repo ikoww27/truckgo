@@ -15,13 +15,13 @@ Route::get('/tentang', [tentangController::class, 'index']);
 Route::get('/api/trucks', [TruckController::class, 'getTruckLocations']);
 
 
-// Rute tampilan admintruck
-Route::get('/tampilan', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
-Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
-Route::get('admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit'); // Menampilkan form edit
-Route::put('admin/{id}', [AdminController::class, 'update'])->name('admin.update'); // Menyimpan perubahan 
+// // Rute tampilan admintruck
+// Route::get('/tampilan', [AdminController::class, 'index'])->name('admin.index');
+// Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+// Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+// Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+// Route::get('admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit'); // Menampilkan form edit
+// Route::put('admin/{id}', [AdminController::class, 'update'])->name('admin.update'); // Menyimpan perubahan 
 
-// Rute pencarian
-Route::get('/api/trucks', [TruckController::class, 'searchTrucks']);
+// // Rute pencarian
+// Route::get('/api/trucks', [TruckController::class, 'searchTrucks']);
