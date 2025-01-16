@@ -1,31 +1,42 @@
-# Base image dengan PHP 8 dan semua dependensi Laravel
-FROM php:8.2-fpm
+FROM php:8.2-fpm-alpine
 
-# Instal library tambahan (termasuk libssl.so.10)
-RUN apt-get update && apt-get install -y \
-    libssl1.0.0 \
-    libssl-dev \
-    libonig-dev \
+# Install system dependencies
+RUN apk add --no-cache \
+    openssl \
     libzip-dev \
-    unzip \
-    && docker-php-ext-install pdo_mysql mbstring zip
+    oniguruma-dev \
+    $PHPIZE_DEPS
 
-# Instal Composer
+# Install PHP extensions
+RUN docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    zip
+
+# Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy file proyek ke dalam container
+# Set working directory
 WORKDIR /var/www/html
+
+# Copy composer files
+COPY composer.json composer.lock ./
+
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Copy the rest of the application
 COPY . .
 
-# Jalankan Composer untuk instalasi dependensi Laravel
-RUN composer install --no-dev --optimize-autoloader
+# Generate application key
+RUN php artisan key:generate
 
-# Konfigurasi permission
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+# Set permissions
+RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
-# Expose port untuk PHP-FPM
+# Expose port
 EXPOSE 9000
 
-# Menjalankan PHP-FPM
+# Start PHP-FPM
 CMD ["php-fpm"]
