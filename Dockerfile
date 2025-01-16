@@ -1,27 +1,30 @@
-# Gunakan image resmi PHP
-FROM php:8.2-apache
+# Base image dengan PHP 8 dan semua dependensi Laravel
+FROM php:8.2-fpm
 
-# Instal dependensi yang diperlukan
+# Instal library tambahan (termasuk libssl.so.10)
 RUN apt-get update && apt-get install -y \
-    libssl1.1 libssl-dev curl unzip libpng-dev \
-    && docker-php-ext-install pdo pdo_mysql
+    libssl1.0.0 \
+    libssl-dev \
+    libonig-dev \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-install pdo_mysql mbstring zip
 
 # Instal Composer
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy aplikasi Laravel ke container
+# Copy file proyek ke dalam container
 WORKDIR /var/www/html
 COPY . .
 
-# Konfigurasi Laravel
-RUN composer install --optimize-autoloader --no-dev \
-    && php artisan key:generate \
-    && php artisan config:cache \
-    && php artisan route:cache
+# Jalankan Composer untuk instalasi dependensi Laravel
+RUN composer install --no-dev --optimize-autoloader
 
-# Ubah hak akses direktori storage
-RUN chmod -R 777 storage bootstrap/cache
+# Konfigurasi permission
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html/storage
 
-# Expose port 80
-EXPOSE 80
-CMD ["apache2-foreground"]
+# Expose port untuk Laravel
+EXPOSE 9000
+
+CMD ["php-fpm"]

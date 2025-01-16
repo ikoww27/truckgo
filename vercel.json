@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
@@ -8,9 +7,6 @@
         { "src": "/build/(.*)", "dest": "/public/build/" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
-    "public": true,
-    "buildCommand": "vite build",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
@@ -29,6 +25,13 @@
         "DB_HOST": "s0i9g.h.filess.io",
         "DB_PORT": "3307",
         "DB_DATABASE": "truck_supperflag",
-        "DB_USERNAME": "truck_supperflag"
-    }
+        "DB_USERNAME": "truck_supperflag",
+        "DB_PASSWORD": "e36c4e20fa2d0662c14ad3238cc5d049cd04e1ba"
+    },
+    "builds": [
+        {
+            "src": "Dockerfile",
+            "use": "@vercel/docker"
+        }
+    ]
 }
