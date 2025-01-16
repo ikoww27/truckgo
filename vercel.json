@@ -1,8 +1,11 @@
 {
     "version": 2,
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.0" }
-    },
+    "builds": [
+        {
+            "src": "Dockerfile",
+            "use": "@vercel/docker"
+        }
+    ],
     "routes": [
         { "src": "/build/(.*)", "dest": "/public/build/" },
         { "src": "/(.*)", "dest": "/api/index.php" }
@@ -27,11 +30,5 @@
         "DB_DATABASE": "truck_supperflag",
         "DB_USERNAME": "truck_supperflag",
         "DB_PASSWORD": "e36c4e20fa2d0662c14ad3238cc5d049cd04e1ba"
-    },
-    "builds": [
-        {
-            "src": "Dockerfile",
-            "use": "@vercel/docker"
-        }
-    ]
+    }
 }
