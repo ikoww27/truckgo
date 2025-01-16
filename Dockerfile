@@ -24,7 +24,8 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage
 
-# Expose port untuk Laravel
+# Expose port untuk PHP-FPM
 EXPOSE 9000
 
+# Menjalankan PHP-FPM
 CMD ["php-fpm"]
