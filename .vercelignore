@@ -1,3 +1,14 @@
-/vendor
-/node_modules
 .env
+.env.*
+/.git
+/.idea
+/node_modules
+/storage/*.key
+/vendor
+.editorconfig
+.gitattributes
+.gitignore
+.styleci.yml
+auth.json
+phpunit.xml
+README.md
