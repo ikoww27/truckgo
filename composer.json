@@ -43,6 +43,13 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "vercel": [
+            "php -r \"putenv('COMPOSER_DISABLE_XDEBUG_WARN=1');\"",
+            "composer install --no-dev --optimize-autoloader",
+            "php artisan config:cache",
+            "php artisan route:cache",
+            "php artisan view:cache"
         ]
     },
     "extra": {
