@@ -1,27 +1,16 @@
 {
     "version": 2,
-    "functions": {
-        "api/*.php": {
-            "runtime": "vercel-php@0.6.0",
-            "excludeFiles": [
-                "storage/**",
-                "tests/**",
-                "vendor/**",
-                "node_modules/**"
-            ]
-        }
-    },
-    "routes": [
-        { "src": "/(css|js|images|fonts|build)/(.*)", "dest": "/public/$1/$2" },
-        { "src": "/(.*)", "dest": "/api/index.php" }
-    ],
     "builds": [
         {
-            "src": "api/index.php",
+            "src": "public/index.php",
             "use": "@vercel/php",
-            "config": {
-                "composerVersion": "2"
-            }
+            "config": { "maxLambdaSize": "50mb" }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "public/index.php"
         }
     ],
 
