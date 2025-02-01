@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\TruckController;
 use App\Http\Controllers\berandaController;
 use App\Http\Controllers\layananController;
 use App\Http\Controllers\tentangController;
-use App\Http\Controllers\TruckController;
+
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
 
 // Rute lainnya
 Route::get('/', [berandaController::class, 'index']);
