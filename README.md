@@ -24,6 +24,29 @@ cd repo-name
 ```
 
 ### 2️⃣ Install Dependensi
-
+``` bash
 composer install
 npm install
+```
+
+### 3️⃣ Konfigurasi Lingkungan
+``` bash
+cp .env.example .env
+php artisan key:generate
+```
+### 4️⃣ Build & Jalankan Aplikasi
+```bash
+npm run dev  # Untuk menjalankan Tailwind
+npm run build  # Build untuk production
+php artisan migrate  # Migrasi database
+php artisan serve  # Menjalankan server lokal
+```
+
+## 📜 Lisensi
+Proyek ini bersifat open-source dan dilindungi oleh lisensi MIT.
+
+## 🤝 Kontribusi
+Jika tertarik berkontribusi, silakan buat Pull Request dan Kembangkan lebih baik.
+*NB: saya belum menyelesaikan sistem login pagenya, jadi untuk menambahkan data bisa ketik /create
+
+## 🚛 GeoTrack - Efisiensi Pemantauan Armada Ekspedisi
