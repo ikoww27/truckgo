@@ -1,4 +1,4 @@
-## 🚛 GeoTrack - Pemantauan Lokasi Truk Ekspedisi  
+## 🚛 TruckGo. - Pemantauan Lokasi Truk Ekspedisi  
 
 📍 **TrcukGo.** adalah aplikasi berbasis web untuk memantau lokasi geografis truk dalam sebuah perusahaan ekspedisi. Proyek ini dikembangkan sebagai bagian dari capaian belajar dalam mata kuliah **Sistem Informasi Geografis**.  
 
@@ -49,4 +49,4 @@ Proyek ini bersifat open-source dan dilindungi oleh lisensi MIT.
 Jika tertarik berkontribusi, silakan buat Pull Request dan Kembangkan lebih baik.
 *NB: saya belum menyelesaikan sistem login pagenya, jadi untuk menambahkan data bisa ketik /create
 
-## 🚛 GeoTrack - Efisiensi Pemantauan Armada Ekspedisi
+## 🚛 TruckGo. - Efisiensi Pemantauan Armada Ekspedisi
